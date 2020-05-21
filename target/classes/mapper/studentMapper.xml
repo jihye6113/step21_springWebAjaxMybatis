@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="studentMapper">
+
+ <select id="selectAll" resultType="student" parameterType="string">
+    select * from student
+    <where>
+      <if test="_parameter!=null">
+         st_no = #{stNo}
+      </if>
+    </where>
+    order by st_no
+ </select>
+ 
+ <insert id="insert" parameterType="student">
+    insert into student 
+    values(#{stNo},#{stName},#{stAge},#{stAddr},#{stPhone})
+ </insert>
+ 
+ <delete id="delete" parameterType="string">
+   delete from student where st_no=#{stNo}
+ </delete>
+   
+</mapper>
+
+
+
+
+
+
